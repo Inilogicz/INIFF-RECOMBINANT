@@ -35,7 +35,7 @@ app.use('/api/send-email', limiter);
 const emailValidationRules = [
   body('name').trim().notEmpty().withMessage('Name is required.').escape(),
   body('email').isEmail().withMessage('Please provide a valid email address.').normalizeEmail(),
-  body('message').trim().isLength({ min: 10 }).withMessage('Message must be at least 10 characters long.').escape(),
+  body('message').trim().isLength({ min: 2 }).withMessage('Message must be at least 10 characters long.').escape(),
 ];
 
 // --- The API Endpoint with the NEW Email Template ---
