@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AnimatedPage from '../components/ui/AnimatedPage';
 import PageHeader from '../components/ui/PageHeader';
 import AnimatedSection from '../components/ui/AnimatedSection';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaWhatsapp } from 'react-icons/fa'; // Import FaWhatsapp
 
 // Define a type for the form data for better type safety
 interface FormData {
@@ -14,12 +14,25 @@ interface FormData {
 // Define the possible states for our form submission
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';
 
+// Define a type for contact info items, including an optional 'href' for links
+interface ContactItem {
+    icon: React.ElementType; // Use React.ElementType for icon components
+    title: string;
+    content: string;
+    href?: string; // Optional link for actionable items
+}
+
 const ContactPage: React.FC = () => {
 
-    const contactInfo = [
+    const phoneNumber = "2348038977010"; // Store phone number without '+' for wa.me link
+    const displayPhoneNumber = "+234 803 897 7010"; // Phone number for display
+    const emailAddress = "info@iniffrecombinant.com";
+
+    const contactInfo: ContactItem[] = [ // Use the ContactItem type
         { icon: FaMapMarkerAlt, title: "Address", content: "312 Road, C-Close, House 1, Festac, Lagos, Nigeria" },
-        { icon: FaPhone, title: "Phone", content: "+234 803 897 7010" },
-        { icon: FaEnvelope, title: "Email", content: "info@iniffrecombinant.com" },
+        { icon: FaPhone, title: "Phone", content: displayPhoneNumber, href: `tel:${displayPhoneNumber.replace(/\s/g, '')}` }, // Link for phone call
+        { icon: FaWhatsapp, title: "WhatsApp", content: displayPhoneNumber, href: `https://wa.me/${phoneNumber}` }, // WhatsApp link
+        { icon: FaEnvelope, title: "Email", content: emailAddress, href: `mailto:${emailAddress}` }, // Link for email
         { icon: FaClock, title: "Working Hours", content: "Mon–Sat | 9am – 6pm" },
     ];
 
@@ -58,7 +71,7 @@ const ContactPage: React.FC = () => {
 
             if (!response.ok) {
                 // If the server response is not 2xx, throw an error
-                throw new Error('Network response was not ok');
+                throw new Error(`Network response was not ok: ${response.statusText}`);
             }
 
             // If we get here, the submission was successful
@@ -92,7 +105,19 @@ const ContactPage: React.FC = () => {
                                         </div>
                                         <div>
                                             <h3 className="text-lg font-semibold text-ir-dark">{item.title}</h3>
-                                            <p className="text-gray-600">{item.content}</p>
+                                            {/* Conditionally render as a link if href exists */}
+                                            {item.href ? (
+                                                <a 
+                                                    href={item.href} 
+                                                    className="text-gray-600 hover:text-ir-primary transition-colors duration-200"
+                                                    target={item.title === "WhatsApp" || item.title === "Email" ? "_blank" : "_self"} // Open WhatsApp/Email in new tab
+                                                    rel={item.title === "WhatsApp" || item.title === "Email" ? "noopener noreferrer" : ""}
+                                                >
+                                                    {item.content}
+                                                </a>
+                                            ) : (
+                                                <p className="text-gray-600">{item.content}</p>
+                                            )}
                                         </div>
                                     </div>
                                 ))}
