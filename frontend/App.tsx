@@ -13,6 +13,7 @@ import ContactPage from './pages/ContactPage';
 import ScrollToTop from './components/ui/ScrollToTop';
 import BlogPage from './pages/BlogPage';
 import BlogDetailPage from './pages/BlogDetailPage';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 const App: React.FC = () => {
@@ -20,6 +21,7 @@ const App: React.FC = () => {
 
     return (
         <div className="flex flex-col min-h-screen">
+            <SpeedInsights/>
             <Header />
             <main className="flex-grow">
                 <ScrollToTop />
