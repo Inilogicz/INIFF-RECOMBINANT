@@ -11,12 +11,17 @@ import TrainingPage from './pages/TrainingPage';
 import BioinformaticsPage from './pages/BioinformaticsPage';
 import ContactPage from './pages/ContactPage';
 import ScrollToTop from './components/ui/ScrollToTop';
+import BlogPage from './pages/BlogPage';
+import BlogDetailPage from './pages/BlogDetailPage';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 const App: React.FC = () => {
     const location = useLocation();
 
     return (
         <div className="flex flex-col min-h-screen">
+            <SpeedInsights/>
             <Header />
             <main className="flex-grow">
                 <ScrollToTop />
@@ -28,6 +33,8 @@ const App: React.FC = () => {
                         <Route path="/training" element={<TrainingPage />} />
                         <Route path="/bioinformatics" element={<BioinformaticsPage />} />
                         <Route path="/contact" element={<ContactPage />} />
+                        <Route path="/blog" element={<BlogPage />} />
+                        <Route path="/blog/:slug" element={<BlogDetailPage />} />
                     </Routes>
                 </AnimatePresence>
             </main>

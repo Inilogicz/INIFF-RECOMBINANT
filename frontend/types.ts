@@ -1,4 +1,3 @@
-
 import { IconType } from 'react-icons';
 
 export interface NavLink {
@@ -26,4 +25,20 @@ export interface Value {
     name: string;
     description: string;
     icon: IconType;
+}
+
+export interface Blog {
+    slug: string;
+    title: string;
+    category?: string | string[];
+    coverImage?: {
+        url: string;
+    };
+    excerpt?: string | null;
+    blogDetails?: {
+        html: string;
+    };
+    author?: string | null;
+    date?: string | null;
+    isPublished?: boolean;
 }
