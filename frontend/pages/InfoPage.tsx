@@ -15,6 +15,10 @@ import {
     FaHandsHelping,
     FaWhatsapp,
     FaArrowRight,
+    FaFacebook,
+    FaInstagram,
+    FaTiktok,
+    FaEnvelope,
 } from 'react-icons/fa';
 import { GiDna1 } from 'react-icons/gi';
 import { IconType } from 'react-icons';
@@ -39,6 +43,58 @@ const WHATSAPP_NUMBER = '2348038977010';
 const WHATSAPP_MESSAGE = "Hi, I'd like to know more about INIFF Recombinant Genomics' products and services.";
 const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
+interface LinkItem {
+    label: string;
+    icon: IconType;
+    className: string;
+}
+
+interface InternalLinkItem extends LinkItem {
+    to: string;
+    href?: undefined;
+}
+
+interface ExternalLinkItem extends LinkItem {
+    href: string;
+    to?: undefined;
+}
+
+const PRIMARY_LINKS: (InternalLinkItem | ExternalLinkItem)[] = [
+    {
+        label: 'Make an Enquiry',
+        icon: FaEnvelope,
+        to: '/contact',
+        className: 'bg-ir-primary hover:bg-opacity-90 text-white',
+    },
+    {
+        label: 'Chat on WhatsApp',
+        icon: FaWhatsapp,
+        href: WHATSAPP_HREF,
+        className: 'bg-[#25D366] hover:bg-opacity-90 text-white',
+    },
+];
+
+const SOCIAL_LINKS: ExternalLinkItem[] = [
+    {
+        label: 'Follow on Instagram',
+        icon: FaInstagram,
+        href: 'https://www.instagram.com/iniffrecombinant?stkn=emNucWQ3YW1mZ3U5',
+        className: 'bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af] hover:opacity-90 text-white',
+    },
+    {
+        label: 'Follow on Facebook',
+        icon: FaFacebook,
+        href: 'https://www.facebook.com/share/14oSKm4Pe5w/',
+        className: 'bg-[#1877F2] hover:bg-opacity-90 text-white',
+    },
+    {
+        label: 'Follow on TikTok',
+        icon: FaTiktok,
+        href: 'https://vm.tiktok.com/ZS9SBrf86cf2S-QpfE5/',
+        className: 'bg-ir-dark hover:bg-opacity-90 text-white',
+    },
+];
+
 const listVariants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.06, delayChildren: 0.2 } },
@@ -46,6 +102,16 @@ const listVariants = {
 
 const itemVariants = {
     hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 },
+};
+
+const linkStackVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.07, delayChildren: 0.15 } },
+};
+
+const linkItemVariants = {
+    hidden: { opacity: 0, y: 12 },
     visible: { opacity: 1, y: 0 },
 };
 
@@ -101,52 +167,75 @@ const InfoPage: React.FC = () => {
                         </p>
                     </AnimatedSection>
 
-                    <h2 className="text-ir-secondary font-bold text-lg mt-10 mb-4">What We Offer</h2>
-                    <motion.ul
+                    <motion.div
                         variants={listVariants}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.3 }}
-                        className="space-y-1"
+                        className="flex flex-wrap justify-center gap-2 mt-6"
                     >
                         {OFFERINGS.map((item) => (
-                            <motion.li
+                            <motion.span
                                 key={item.label}
                                 variants={itemVariants}
-                                className="flex items-center gap-3 py-2"
+                                className="inline-flex items-center gap-1.5 rounded-full bg-ir-primary/10 text-ir-primary text-xs font-medium px-3 py-1.5"
                             >
-                                <span className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-ir-primary/10 text-ir-primary">
-                                    <item.icon size={16} />
-                                </span>
-                                <span className="text-ir-dark font-medium">{item.label}</span>
-                            </motion.li>
+                                <item.icon size={12} />
+                                {item.label}
+                            </motion.span>
                         ))}
-                    </motion.ul>
+                    </motion.div>
 
-                    <div className="mt-10 space-y-3">
-                        <Link
-                            to="/contact"
-                            className="flex items-center justify-center gap-2 w-full bg-ir-primary hover:bg-opacity-90 text-white font-semibold py-3.5 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] shadow-md"
-                        >
-                            Make an Enquiry
-                        </Link>
-                        <a
-                            href={WHATSAPP_HREF}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-opacity-90 text-white font-semibold py-3.5 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] shadow-md"
-                        >
-                            <FaWhatsapp size={18} />
-                            Chat on WhatsApp
-                        </a>
-                        <Link
-                            to="/"
-                            className="flex items-center justify-center gap-2 w-full border-2 border-ir-secondary text-ir-secondary hover:bg-ir-secondary hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-300"
-                        >
-                            Visit Website
-                            <FaArrowRight size={13} />
-                        </Link>
-                    </div>
+                    <motion.div
+                        variants={linkStackVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        className="mt-10 space-y-3"
+                    >
+                        {PRIMARY_LINKS.map((item) => {
+                            const content = (
+                                <>
+                                    <item.icon size={18} />
+                                    {item.label}
+                                </>
+                            );
+                            const classes = `flex items-center justify-center gap-2 w-full font-semibold py-3.5 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] shadow-md ${item.className}`;
+                            return (
+                                <motion.div key={item.label} variants={linkItemVariants}>
+                                    {item.to ? (
+                                        <Link to={item.to} className={classes}>{content}</Link>
+                                    ) : (
+                                        <a href={item.href} target="_blank" rel="noopener noreferrer" className={classes}>{content}</a>
+                                    )}
+                                </motion.div>
+                            );
+                        })}
+
+                        {SOCIAL_LINKS.map((item) => (
+                            <motion.a
+                                key={item.label}
+                                variants={linkItemVariants}
+                                href={item.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`flex items-center justify-center gap-2 w-full font-semibold py-3.5 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] shadow-md ${item.className}`}
+                            >
+                                <item.icon size={18} />
+                                {item.label}
+                            </motion.a>
+                        ))}
+
+                        <motion.div variants={linkItemVariants}>
+                            <Link
+                                to="/"
+                                className="flex items-center justify-center gap-2 w-full border-2 border-ir-secondary text-ir-secondary hover:bg-ir-secondary hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-300"
+                            >
+                                Visit Website
+                                <FaArrowRight size={13} />
+                            </Link>
+                        </motion.div>
+                    </motion.div>
 
                     <div className="mt-12 pt-6 border-t border-gray-100 text-center text-gray-400 text-sm space-y-1">
                         <p>Lagos, Nigeria &middot; info@iniffrecombinant.com</p>

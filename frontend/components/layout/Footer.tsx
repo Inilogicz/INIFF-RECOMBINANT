@@ -3,7 +3,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { NAV_LINKS } from '../../constants';
 import Logo from '../ui/Logo';
-import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa';
+
+const SOCIAL_LINKS = [
+    { icon: FaFacebook, href: 'https://www.facebook.com/share/14oSKm4Pe5w/', label: 'Facebook' },
+    { icon: FaInstagram, href: 'https://www.instagram.com/iniffrecombinant?stkn=emNucWQ3YW1mZ3U5', label: 'Instagram' },
+    { icon: FaTiktok, href: 'https://vm.tiktok.com/ZS9SBrf86cf2S-QpfE5/', label: 'TikTok' },
+];
 
 const Footer: React.FC = () => {
     return (
@@ -19,9 +25,18 @@ const Footer: React.FC = () => {
                             Accelerating Africa’s Scientific & Healthcare Innovation.
                         </p>
                          <div className="flex space-x-4 mt-6">
-                            <a href="#" className="text-gray-300 hover:text-ir-primary transition-colors"><FaFacebook size={20} /></a>
-                            <a href="#" className="text-gray-300 hover:text-ir-primary transition-colors"><FaTwitter size={20} /></a>
-                            <a href="#" className="text-gray-300 hover:text-ir-primary transition-colors"><FaLinkedin size={20} /></a>
+                            {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
+                                <a
+                                    key={label}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={label}
+                                    className="text-gray-300 hover:text-ir-primary transition-colors"
+                                >
+                                    <Icon size={20} />
+                                </a>
+                            ))}
                         </div>
                     </div>
 
