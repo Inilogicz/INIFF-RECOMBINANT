@@ -49,13 +49,38 @@ app.use('/api/send-email', limiter);
 
 
 // --- Validation Rules ---
+const INTEREST_OPTIONS = [
+  'Laboratory Equipment',
+  'Laboratory Consumables',
+  'Reagents & Kits',
+  'Genomics Solutions',
+  'Bioinformatics',
+  'Laboratory Setup',
+  'Training',
+  'Consultancy',
+  'Other',
+];
+
+const TIMELINE_OPTIONS = [
+  'Immediately',
+  'Within 1 month',
+  '1–3 months',
+  'Just making an enquiry',
+];
+
 const emailValidationRules = [
-  // name must be a non-empty string and sanitized
-  body('name').trim().notEmpty().withMessage('Name is required.').escape(),
-  // email must be a valid email format
+  body('fullName').trim().notEmpty().withMessage('Full name is required.').escape(),
+  body('company').trim().notEmpty().withMessage('Company / Institution is required.').escape(),
   body('email').isEmail().withMessage('Please provide a valid email address.').normalizeEmail(),
-  // message must be at least 10 chars long and sanitized
-  body('message').trim().isLength({ min: 10 }).withMessage('Message must be at least 10 characters long.').escape(),
+  body('phone').optional({ checkFalsy: true }).trim().escape(),
+  body('location').trim().notEmpty().withMessage('Location is required.').escape(),
+  body('interests')
+    .isArray({ min: 1 }).withMessage('Select at least one area of interest.')
+    .custom((interests) => interests.every((i) => INTEREST_OPTIONS.includes(i)))
+    .withMessage('Invalid interest selection.'),
+  body('productService').trim().notEmpty().withMessage('Product / Service Required is required.').escape(),
+  body('requirement').optional({ checkFalsy: true }).trim().escape(),
+  body('timeline').optional({ checkFalsy: true }).trim().isIn(TIMELINE_OPTIONS).withMessage('Invalid timeline selection.'),
 ];
 
 // --- The API Endpoint ---
@@ -68,23 +93,53 @@ app.post('/api/send-email', emailValidationRules, async (req, res) => {
   }
 
   // 2. Destructure sanitized data
-  const { name, email, message } = req.body;
+  const {
+    fullName,
+    company,
+    email,
+    phone,
+    location,
+    interests,
+    productService,
+    requirement,
+    timeline,
+  } = req.body;
+
+  const row = (label, value) => value
+    ? `<tr><td style="padding:8px 12px;font-weight:600;color:#0f3d3e;vertical-align:top;white-space:nowrap;">${label}</td><td style="padding:8px 12px;color:#333;">${value}</td></tr>`
+    : '';
+
+  const html = `
+    <div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;">
+      <h2 style="color:#0f3d3e;">New Product & Service Enquiry</h2>
+      <table style="width:100%;border-collapse:collapse;">
+        ${row('Full Name', fullName)}
+        ${row('Company / Institution', company)}
+        ${row('Email', email)}
+        ${row('Phone / WhatsApp', phone)}
+        ${row('Location', location)}
+        ${row('Interested In', interests.join(', '))}
+        ${row('Product / Service Required', productService)}
+        ${row('Requirement Details', requirement)}
+        ${row('How Soon?', timeline)}
+      </table>
+    </div>
+  `;
 
   try {
     const { data, error } = await resend.emails.send({
-      from: `Website Contact <${process.env.MAIL_FROM_DOMAIN}>`,
+      from: `Website Enquiry <${process.env.MAIL_FROM_DOMAIN}>`,
       to: process.env.MAIL_TO,
       reply_to: email, // Set the user's email as the reply-to address
-      subject: `New Message from ${name}`,
-      // The HTML template remains the same
-      html: `... your beautiful HTML email template ...`
+      subject: `New Enquiry from ${fullName} (${company})`,
+      html,
     });
 
     if (error) {
       logger.error('Resend API Error:', { error });
       return res.status(400).json({ error: 'Failed to send email.' });
     }
-    
+
     logger.info(`Email sent successfully from ${email}`, { emailId: data.id });
     res.status(200).json({ message: 'Email sent successfully!', data });
 

@@ -10,6 +10,7 @@ import ServicesPage from './pages/ServicesPage';
 import TrainingPage from './pages/TrainingPage';
 import BioinformaticsPage from './pages/BioinformaticsPage';
 import ContactPage from './pages/ContactPage';
+import InfoPage from './pages/InfoPage';
 import ScrollToTop from './components/ui/ScrollToTop';
 
 const App: React.FC = () => {
@@ -28,6 +29,7 @@ const App: React.FC = () => {
                         <Route path="/training" element={<TrainingPage />} />
                         <Route path="/bioinformatics" element={<BioinformaticsPage />} />
                         <Route path="/contact" element={<ContactPage />} />
+                        <Route path="/info" element={<InfoPage />} />
                     </Routes>
                 </AnimatePresence>
             </main>
