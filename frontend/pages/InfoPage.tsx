@@ -36,7 +36,7 @@ const OFFERINGS: OfferingItem[] = [
 ];
 
 const WHATSAPP_NUMBER = '2348038977010';
-const WHATSAPP_MESSAGE = "Hi, I'd like to know more about INIFF Recombinant's products and services.";
+const WHATSAPP_MESSAGE = "Hi, I'd like to know more about INIFF Recombinant Genomics' products and services.";
 const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 const listVariants = {
@@ -83,8 +83,8 @@ const InfoPage: React.FC = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <img src="/logo.png" alt="INIFF Recombinant" className="h-16 w-16 mx-auto mb-4" />
-                            <h1 className="text-white font-bold text-2xl tracking-tight">INIFF Recombinant</h1>
+                            <img src="/logo.png" alt="INIFF Recombinant Genomics" className="h-16 w-16 mx-auto mb-4" />
+                            <h1 className="text-white font-bold text-2xl tracking-tight">INIFF Recombinant Genomics</h1>
                             <p className="text-ir-primary font-semibold text-sm tracking-wide mt-1">
                                 Life Science Solutions
                             </p>
@@ -150,7 +150,7 @@ const InfoPage: React.FC = () => {
 
                     <div className="mt-12 pt-6 border-t border-gray-100 text-center text-gray-400 text-sm space-y-1">
                         <p>Lagos, Nigeria &middot; info@iniffrecombinant.com</p>
-                        <p>&copy; {new Date().getFullYear()} INIFF RECOMBINANT (iR)</p>
+                        <p>&copy; {new Date().getFullYear()} INIFF RECOMBINANT GENOMICS (iR)</p>
                     </div>
                 </div>
             </div>

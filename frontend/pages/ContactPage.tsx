@@ -57,7 +57,7 @@ const inputClasses = "mt-1 block w-full px-4 py-3 border border-gray-300 rounded
 const ContactPage: React.FC = () => {
 
     const contactInfo = [
-        { icon: FaMapMarkerAlt, title: "Address", content: "312 Road, C-Close, House 1, Festac, Lagos, Nigeria" },
+        { icon: FaMapMarkerAlt, title: "Address", content: "216, Adeyemo Akapo, Omole Phase 1, Lagos, Nigeria" },
         { icon: FaPhone, title: "Phone", content: "+234 803 897 7010" },
         { icon: FaEnvelope, title: "Email", content: "info@iniffrecombinant.com" },
         { icon: FaClock, title: "Working Hours", content: "Mon–Sat | 9am – 6pm" },
@@ -144,7 +144,7 @@ const ContactPage: React.FC = () => {
                         <AnimatedSection delay={0.2}>
                             <div className="bg-ir-light p-8 rounded-lg shadow-lg">
                                 <h2 className="text-3xl font-bold text-ir-secondary mb-2">Product & Service Enquiry</h2>
-                                <p className="text-gray-600 mb-6">Thank you for your interest in INIFF Recombinant. Please complete the form below, and our team will get back to you shortly.</p>
+                                <p className="text-gray-600 mb-6">Thank you for your interest in INIFF Recombinant Genomics. Please complete the form below, and our team will get back to you shortly.</p>
 
                                 {status === 'success' ? (
                                     <div className="bg-green-50 border border-green-200 text-green-800 rounded-md p-6 text-center">

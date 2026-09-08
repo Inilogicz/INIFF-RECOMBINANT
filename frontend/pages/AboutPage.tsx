@@ -9,7 +9,7 @@ const AboutPage: React.FC = () => {
     return (
         <AnimatedPage>
             <PageHeader
-                title="About INIFF RECOMBINANT"
+                title="About INIFF RECOMBINANT GENOMICS"
                 subtitle="Pioneering scientific progress and capacity building across Africa."
             />
 

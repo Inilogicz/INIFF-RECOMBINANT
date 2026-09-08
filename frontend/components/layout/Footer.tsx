@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
                     <div className="md:col-span-1 flex flex-col items-start">
                         <Link to="/" className="flex items-center space-x-3 mb-4">
                             <img src="/logo.png" alt="" className="h-10" />
-                            <span className="text-l font-bold">INIFF RECOMBINANT</span>
+                            <span className="text-l font-bold">INIFF RECOMBINANT GENOMICS</span>
                         </Link>
                         <p className="text-gray-300 text-sm">
                             Accelerating Africa’s Scientific & Healthcare Innovation.
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
                         <ul className="space-y-2 text-gray-300">
                             <li className="flex items-start">
                                 <span className="mt-1 mr-2"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg></span>
-                                <span>312 Road, C-Close, House 1, Festac, Lagos, Nigeria</span>
+                                <span>216, Adeyemo Akapo, Omole Phase 1, Lagos, Nigeria</span>
                             </li>
                              <li className="flex items-start">
                                 <span className="mt-1 mr-2"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg></span>
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
 
                 </div>
                  <div className="mt-12 border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
-                    <p>&copy; {new Date().getFullYear()} INIFF RECOMBINANT (iR). All Rights Reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} INIFF RECOMBINANT GENOMICS (iR). All Rights Reserved.</p>
                 </div>
             </div>
         </footer>

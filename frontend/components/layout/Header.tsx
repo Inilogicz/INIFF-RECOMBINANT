@@ -42,7 +42,7 @@ const Header: React.FC = () => {
             <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
                 <Link to="/" className="flex items-center space-x-2">
                     <img src="/logo.png" alt="" className="h-10"  />
-                    <span className={`text-xl font-bold transition-colors duration-300 ${scrolled || isOpen ? 'text-ir-secondary' : 'text-white'}`}>INIFF RECOMBINANT</span>
+                    <span className={`text-xl font-bold transition-colors duration-300 ${scrolled || isOpen ? 'text-ir-secondary' : 'text-white'}`}>INIFF RECOMBINANT GENOMICS</span>
                 </Link>
 
                 <div className="hidden md:flex items-center space-x-8">

@@ -1,4 +1,4 @@
-# INIFF RECOMBINANT (IR)
+# INIFF RECOMBINANT GENOMICS (IR)
 
 A **React + TypeScript** web application built with **Vite**, deployed on **Vercel**.  
 This project provides an interactive, efficient, and modular front-end experience for recombinant data visualization and analysis.
