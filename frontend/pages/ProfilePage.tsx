@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import AnimatedPage from '../components/ui/AnimatedPage';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import ShareButton from '../components/ui/ShareButton';
-import { FaEnvelope } from 'react-icons/fa';
+import { FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 import { OFFERINGS, TEAM_PROFILES } from '../constants';
 
 const listVariants = {
@@ -91,12 +91,29 @@ const ProfilePage: React.FC = () => {
                     </motion.div>
 
                     <div className="mt-10 space-y-3">
+                        {profile.phone && (
+                            <a
+                                href={`tel:${profile.phone}`}
+                                className="flex items-center justify-center gap-2 w-full bg-ir-primary hover:bg-opacity-90 text-white font-semibold py-3.5 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] shadow-md"
+                            >
+                                <FaPhoneAlt size={16} />
+                                Call {profile.name.split(' ')[0]}
+                            </a>
+                        )}
+                        {profile.email && (
+                            <a
+                                href={`mailto:${profile.email}`}
+                                className="flex items-center justify-center gap-2 w-full bg-ir-secondary hover:bg-opacity-90 text-white font-semibold py-3.5 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] shadow-md"
+                            >
+                                <FaEnvelope size={18} />
+                                Email {profile.name.split(' ')[0]}
+                            </a>
+                        )}
                         <Link
                             to="/contact"
-                            className="flex items-center justify-center gap-2 w-full bg-ir-primary hover:bg-opacity-90 text-white font-semibold py-3.5 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] shadow-md"
+                            className="flex items-center justify-center gap-2 w-full border-2 border-ir-secondary text-ir-secondary hover:bg-ir-secondary hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-300"
                         >
-                            <FaEnvelope size={18} />
-                            Contact Us
+                            Make an Enquiry
                         </Link>
                         <ShareButton
                             title={`${profile.name} — INIFF Recombinant Genomics`}

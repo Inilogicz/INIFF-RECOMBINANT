@@ -34,6 +34,8 @@ export interface TeamProfile {
     position: string;
     summary: string;
     photo?: string;
+    email?: string;
+    phone?: string;
 }
 
 export interface OfferingItem {

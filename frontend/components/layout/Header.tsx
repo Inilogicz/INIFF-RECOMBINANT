@@ -47,7 +47,7 @@ const Header: React.FC = () => {
                             INIFF RECOMBINANT
                         </span>
                         <span className="block text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-ir-primary">
-                            GENOMICS
+                            GENOMICS LIMITED
                         </span>
                     </span>
                 </Link>
