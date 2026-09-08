@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
@@ -32,6 +32,7 @@ const App: React.FC = () => {
                         <Route path="/contact" element={<ContactPage />} />
                         <Route path="/info" element={<InfoPage />} />
                         <Route path="/info/:slug" element={<ProfilePage />} />
+                        <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </AnimatePresence>
             </main>
