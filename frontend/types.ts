@@ -27,3 +27,16 @@ export interface Value {
     description: string;
     icon: IconType;
 }
+
+export interface TeamProfile {
+    slug: string;
+    name: string;
+    position: string;
+    summary: string;
+    photo?: string;
+}
+
+export interface OfferingItem {
+    label: string;
+    icon: IconType;
+}

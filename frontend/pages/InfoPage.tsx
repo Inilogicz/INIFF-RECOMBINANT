@@ -5,14 +5,8 @@ import { motion } from 'framer-motion';
 import AnimatedPage from '../components/ui/AnimatedPage';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import Logo from '../components/ui/Logo';
+import ShareButton from '../components/ui/ShareButton';
 import {
-    FaMicroscope,
-    FaBoxOpen,
-    FaFlask,
-    FaLaptopCode,
-    FaTools,
-    FaChalkboardTeacher,
-    FaHandsHelping,
     FaWhatsapp,
     FaArrowRight,
     FaFacebook,
@@ -20,24 +14,8 @@ import {
     FaTiktok,
     FaEnvelope,
 } from 'react-icons/fa';
-import { GiDna1 } from 'react-icons/gi';
 import { IconType } from 'react-icons';
-
-interface OfferingItem {
-    label: string;
-    icon: IconType;
-}
-
-const OFFERINGS: OfferingItem[] = [
-    { label: 'Laboratory Equipment', icon: FaMicroscope },
-    { label: 'Laboratory Consumables', icon: FaBoxOpen },
-    { label: 'Reagents & Kits', icon: FaFlask },
-    { label: 'Genomics Solutions', icon: GiDna1 },
-    { label: 'Bioinformatics', icon: FaLaptopCode },
-    { label: 'Laboratory Setup', icon: FaTools },
-    { label: 'Training', icon: FaChalkboardTeacher },
-    { label: 'Consultancy', icon: FaHandsHelping },
-];
+import { OFFERINGS } from '../constants';
 
 const WHATSAPP_NUMBER = '2348038977010';
 const WHATSAPP_MESSAGE = "Hi, I'd like to know more about INIFF Recombinant Genomics' products and services.";
@@ -234,6 +212,15 @@ const InfoPage: React.FC = () => {
                                 Visit Website
                                 <FaArrowRight size={13} />
                             </Link>
+                        </motion.div>
+
+                        <motion.div variants={linkItemVariants}>
+                            <ShareButton
+                                title="INIFF Recombinant Genomics"
+                                text="Check out INIFF Recombinant Genomics — Life Science Solutions."
+                                label="Share This Page"
+                                className="!border-ir-secondary/40 !text-gray-500 hover:!text-white !py-3"
+                            />
                         </motion.div>
                     </motion.div>
 

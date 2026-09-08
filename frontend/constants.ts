@@ -1,9 +1,20 @@
 
-import { NavLink, Service, TrainingCourse, BioinformaticService, Value } from './types';
-import { FaFlask, FaLaptopCode, FaChalkboardTeacher, FaTools, FaHandsHelping } from 'react-icons/fa';
+import { NavLink, Service, TrainingCourse, BioinformaticService, Value, TeamProfile, OfferingItem } from './types';
+import { FaFlask, FaLaptopCode, FaChalkboardTeacher, FaTools, FaHandsHelping, FaMicroscope, FaBoxOpen } from 'react-icons/fa';
 import { GiDna1 } from 'react-icons/gi';
 import { HiOutlineLightBulb } from 'react-icons/hi';
 import { RiShieldCheckLine } from 'react-icons/ri';
+
+export const OFFERINGS: OfferingItem[] = [
+    { label: 'Laboratory Equipment', icon: FaMicroscope },
+    { label: 'Laboratory Consumables', icon: FaBoxOpen },
+    { label: 'Reagents & Kits', icon: FaFlask },
+    { label: 'Genomics Solutions', icon: GiDna1 },
+    { label: 'Bioinformatics', icon: FaLaptopCode },
+    { label: 'Laboratory Setup', icon: FaTools },
+    { label: 'Training', icon: FaChalkboardTeacher },
+    { label: 'Consultancy', icon: FaHandsHelping },
+];
 
 export const NAV_LINKS: NavLink[] = [
     { name: 'Home', path: '/' },
@@ -55,6 +66,34 @@ export const BIOINFORMATICS_SERVICES: BioinformaticService[] = [
     { title: "Variant Calling & Omics Analysis", description: "Cutting-edge techniques for identifying genetic variants and integrating multi-omics datasets." },
     { title: "Phylogenetics & Annotation", description: "Construct evolutionary trees and functionally annotate genomes to understand biological diversity and function." },
     { title: "Data Visualization & Research Support", description: "Transforming complex data into intuitive visualizations and providing ongoing support for your research projects." },
+];
+
+// TODO: replace position/summary/photo with the real details for each team member.
+export const TEAM_PROFILES: TeamProfile[] = [
+    {
+        slug: 'james',
+        name: 'James',
+        position: 'Team Member',
+        summary: 'Bio coming soon.',
+    },
+    {
+        slug: 'chidozie',
+        name: 'Chidozie',
+        position: 'Team Member',
+        summary: 'Bio coming soon.',
+    },
+    {
+        slug: 'nkechi',
+        name: 'Nkechi',
+        position: 'Team Member',
+        summary: 'Bio coming soon.',
+    },
+    {
+        slug: 'happinesse',
+        name: 'Happinesse',
+        position: 'Team Member',
+        summary: 'Bio coming soon.',
+    },
 ];
 
 export const CORE_VALUES: Value[] = [

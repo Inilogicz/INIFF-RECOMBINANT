@@ -11,6 +11,7 @@ import TrainingPage from './pages/TrainingPage';
 import BioinformaticsPage from './pages/BioinformaticsPage';
 import ContactPage from './pages/ContactPage';
 import InfoPage from './pages/InfoPage';
+import ProfilePage from './pages/ProfilePage';
 import ScrollToTop from './components/ui/ScrollToTop';
 
 const App: React.FC = () => {
@@ -30,6 +31,7 @@ const App: React.FC = () => {
                         <Route path="/bioinformatics" element={<BioinformaticsPage />} />
                         <Route path="/contact" element={<ContactPage />} />
                         <Route path="/info" element={<InfoPage />} />
+                        <Route path="/info/:slug" element={<ProfilePage />} />
                     </Routes>
                 </AnimatePresence>
             </main>
