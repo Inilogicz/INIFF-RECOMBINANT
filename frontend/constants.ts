@@ -72,7 +72,7 @@ export const BIOINFORMATICS_SERVICES: BioinformaticService[] = [
 export const TEAM_PROFILES: TeamProfile[] = [
     {
         slug: 'james',
-        name: 'James',
+        name: 'James Inniso',
         position: 'Team Member',
         summary: 'Bio coming soon.',
     },
@@ -92,6 +92,7 @@ export const TEAM_PROFILES: TeamProfile[] = [
         summary: 'I connect laboratories, researchers, and healthcare professionals with reliable life science products, laboratory solutions, and technical services.',
         email: 'sales.team@iniffrecombinant.com',
         phone: '+2347060777929',
+        photo: '/team/nkechi.png',
     },
     {
         slug: 'happinesse',
